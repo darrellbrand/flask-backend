@@ -2,16 +2,11 @@ from flask import Flask
 import google.generativeai as genai
 import os
 from flask.cli import load_dotenv
-
-load_dotenv()
-genai.configure(api_key=os.environ["API_KEY"])
-
-model = genai.GenerativeModel('gemini-1.5-flash')
-
 # Flask Constructor
 app = Flask(__name__)
-
-
+load_dotenv()
+genai.configure(api_key=os.environ["API_KEY"])
+model = genai.GenerativeModel('gemini-1.5-flash')
 # decorator to associate
 # a function with the url
 @app.route("/ai/<question>")
